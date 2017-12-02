@@ -1,4 +1,4 @@
-package imple;
+package datastructure;
 
 /**
  * Created by ByeongChan on 2017. 11. 7..

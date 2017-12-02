@@ -1,4 +1,4 @@
-import imple.BinarySearchTree;
+import datastructure.BinarySearchTree;
 
 /**
  * Created by ByeongChan on 2017. 12. 2..
