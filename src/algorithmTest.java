@@ -1,29 +1,21 @@
-import datastructure.Stack;
-import java.util.Scanner;
+import datastructure.ArrayQueue;
 
 /**
  * Created by ByeongChan on 2017. 12. 2..
  */
 public class algorithmTest {
     public static void main(String[] args) {
-        Stack st = new Stack(5);
+        ArrayQueue q = new ArrayQueue(5);
 
-        st.push(10);
-        st.push(5);
-        st.push(7);
-        st.push(6);
-        st.push(3);
-        st.push(3);
+        q.enQueue(5);
+        q.enQueue(4);
 
-        st.printStack();
+        q.printQueue();
 
-        System.out.println(st.pop());
-        System.out.println(st.pop());
-        System.out.println(st.pop());
-        System.out.println(st.pop());
-        System.out.println(st.pop());
-        System.out.println(st.pop());
+        q.deQueue();
+        q.deQueue();
+        q.deQueue();
 
-        st.printStack();
+        q.printQueue();
     }
 }
