@@ -122,4 +122,14 @@ public class DoublyLinkedList {
 
         size++;
     }
+
+    public Object removeFirst(){ // 첫번째 노드를 제거하고 데이터를 반환
+        Node resultNode = getNode(0);
+
+        head.nextNode = resultNode.nextNode;
+
+        if(head.nextNode != null){
+            
+        }
+    }
 }
