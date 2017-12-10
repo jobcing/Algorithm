@@ -2,6 +2,8 @@ package datastructure;
 
 /**
  * Created by ByeongChan on 2017. 12. 9..
+ *
+ * 이중 연결 리스트 구현 (Java)
  */
 public class DoublyLinkedList {
 
@@ -128,8 +130,43 @@ public class DoublyLinkedList {
 
         head.nextNode = resultNode.nextNode;
 
-        if(head.nextNode != null){
-            
+        if(head.nextNode != null){ // 리스트가 비어있지 않은 경우
+            resultNode.nextNode.prevNode = null; // 두번째 노드가 가르키는 앞 노드는 null
+        } else{
+            head.prevNode = null; // 헤드가 가르키는 마지막 노드는 null
         }
+
+        size--;
+        return resultNode.data;
+    }
+
+    public Object remove(int index){ // index 위치의 노드를 제거하고 데이터 반환
+        if(index < 0 || index >= size){
+            throw new IndexOutOfBoundsException("Index : " + index + ", Size : " + size);
+        }
+
+        if(index == 0){
+            return removeFirst();
+        }
+
+        Node resultNode = getNode(index);
+        Node prevNode = resultNode.prevNode;
+
+        if(resultNode.nextNode != null){ // 삭제하는 노드의 위치가 마지막이 아니라면
+            Node nextNode = resultNode.nextNode;
+
+            prevNode.nextNode = nextNode;
+            nextNode.prevNode = prevNode;
+        } else{
+            prevNode.nextNode = null;
+            head.prevNode = prevNode;
+        }
+
+        size--;
+        return resultNode.data;
+    }
+
+    public int getSize(){ // 리스트의 사이즈를 반환
+        return size;
     }
 }
