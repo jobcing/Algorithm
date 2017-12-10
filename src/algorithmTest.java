@@ -1,21 +1,18 @@
-import datastructure.ArrayQueue;
+import datastructure.DoublyLinkedList;
 
 /**
  * Created by ByeongChan on 2017. 12. 2..
  */
 public class algorithmTest {
     public static void main(String[] args) {
-        ArrayQueue q = new ArrayQueue(5);
+        DoublyLinkedList dlist = new DoublyLinkedList();
 
-        q.enQueue(5);
-        q.enQueue(4);
+        dlist.addFirst(5);
+        dlist.addFirst(4);
+        dlist.addFirst(2);
+        dlist.addFirst(1);
 
-        q.printQueue();
-
-        q.deQueue();
-        q.deQueue();
-        q.deQueue();
-
-        q.printQueue();
+        System.out.println(dlist.getData(2));
+        System.out.println(dlist.getData(4));
     }
 }
