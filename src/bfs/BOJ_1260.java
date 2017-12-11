@@ -9,6 +9,8 @@ import java.util.Scanner;
  *
  * 백준 알고리즘 1260번 문제풀이 (https://www.acmicpc.net/problem/1260)
  *
+ * DFS (Depth First Search) 깊이우선 탐색 : 인접해 있는 노드 순으로 탐색 (재귀호출 사용)
+ * BFS (Breadth First Search) 너비우선 탐색 : 가까운 정점 먼저 탐색 후 점차 한단계씩 탐색 (큐 사용)
  */
 public class BOJ_1260 {
 
@@ -38,7 +40,7 @@ public class BOJ_1260 {
         dfs(V);
 
         // 노드 방문 여부 초기화
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i <= N; i++) {
             isVisited[i] = false;
         }
 
@@ -50,7 +52,7 @@ public class BOJ_1260 {
     // 깊이 우선 탐색
     private static void dfs(int i){
         isVisited[i] = true;
-        System.out.println(i + " ");
+        System.out.print(i + " ");
 
         for (int j = 1; j <= N; j++) {
             if(graph[i][j] == 1 && !isVisited[j]){
@@ -61,18 +63,19 @@ public class BOJ_1260 {
 
     // 너비 우선 탐색
     private static void bfs(int i){
-        Queue<Integer> queue = new LinkedList<Integer>();
-        queue.offer(i);
+        Queue<Integer> q = new LinkedList<Integer>();
 
-        while(!queue.isEmpty()){
-            i = queue.poll();
-            System.out.println(i + " ");
-            isVisited[i] = true;
+        q.offer(i);
+        isVisited[i] = true;
+
+        while(!q.isEmpty()){
+            i = q.poll();
+            System.out.print(i + " ");
 
             for (int j = 1; j <= N; j++) {
-                if(!isVisited[j] && graph[i][j] == 1){
+                if(graph[i][j] == 1 && !isVisited[j]){
+                    q.offer(j);
                     isVisited[j] = true;
-                    queue.offer(j);
                 }
             }
         }
