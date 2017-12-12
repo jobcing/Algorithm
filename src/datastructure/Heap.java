@@ -46,6 +46,8 @@ public class Heap {
             return;
         }
 
+        usedSize--;
+
         int curIndex = 0;
         int leftChildIndex = getLeftChildIndex(curIndex);
         int rightChildIndex = getRightChildIndex(curIndex);
@@ -55,29 +57,61 @@ public class Heap {
 
         // 리프노드가 되거나, 양쪽 자식보다 작은 값을 가질 때까지 작업을 반복
         while(true){
+            // 오른쪽, 왼쪽 자식 노드 중 선택될 노드 위치 저장
+            int selectChildIndex = 0;
 
+            // 왼쪽 자식 노드 위치가 사용 크기보다 같거나 크다면 리프노드이다.
+            if(leftChildIndex >= usedSize){ break; }
+            // 오른쪽 자식 노드 위치가 사용 크기보다 같거나 크다면 자식 노드는 왼쪽 노드 뿐이다.
+            if(rightChildIndex >= usedSize){
+                // 왼쪽 노드를 선택
+                selectChildIndex = leftChildIndex;
+            } else{ // 자식 노드가 양쪽에 존재하기 때문에 더 작은 쪽을 선택
+                if(heapArray[leftChildIndex] > heapArray[rightChildIndex]){
+                    selectChildIndex = rightChildIndex;
+                } else{
+                    selectChildIndex = leftChildIndex;
+                }
+            }
+
+            // 선택된 자식 노드이 부모 노드보다 작다면 바꿔준다.
+            if(heapArray[selectChildIndex] < heapArray[curIndex]){
+                swap(heapArray, selectChildIndex, curIndex);
+                curIndex = selectChildIndex;
+            } else{
+                break;
+            }
+
+            // 자식 노드 수정
+            leftChildIndex = getLeftChildIndex(curIndex);
+            rightChildIndex = getRightChildIndex(curIndex);
         }
-
-        usedSize--;
     }
 
     private int getParentIndex(int curIndex){
-        return curIndex / 2;
+        // k번째 인덱스 위치에서 부모노드 인덱스는 (k - 1) / 2
+        return (int) ((curIndex - 1) / 2);
     }
 
     private int getLeftChildIndex(int curIndex){
-
+        // k번째 인덱스 위치에서 왼쪽 자식 노드 인덱스는 2k + 1
+        return 2 * curIndex + 1;
     }
 
     private int getRightChildIndex(int curIndex){
-
+        // k번째 인덱스 위치에서 오른쪽 자식 노드 인덱스는 2k + 2
+        return 2 * curIndex + 2;
     }
 
-    private void swap(int[] heapArray, int curIndex, int parentIndex){
+    private void swap(int[] array, int index1, int index2){
         int temp;
 
-        temp = heapArray[curIndex];
-        heapArray[curIndex] = heapArray[parentIndex];
-        heapArray[parentIndex] = temp;
+        temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
+    }
+
+    public void print(){
+        int depth = 0;
     }
 }
