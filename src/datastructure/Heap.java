@@ -82,7 +82,7 @@ public class Heap {
                 break;
             }
 
-            // 자식 노드 수정
+            // 자식 노드 업데이트
             leftChildIndex = getLeftChildIndex(curIndex);
             rightChildIndex = getRightChildIndex(curIndex);
         }
@@ -113,5 +113,20 @@ public class Heap {
 
     public void print(){
         int depth = 0;
+        int index = 0;
+
+        for (int i = 0; i < usedSize; i++) {
+            if(index == i){
+                if(index != 0) {
+                    System.out.println("");
+                }
+
+                System.out.println("Depth : " + depth);
+                index = index + (int) Math.pow(2, depth);
+                depth++;
+            }
+            System.out.println(heapArray[i] + " ");
+        }
+        System.out.println("");
     }
 }
