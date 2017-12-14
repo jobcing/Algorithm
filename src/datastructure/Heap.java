@@ -125,7 +125,7 @@ public class Heap {
                 index = index + (int) Math.pow(2, depth); // 깊이가 깊어질수록 노드의 개수가 2^n으로 늘어난다.
                 depth++;
             }
-            System.out.println(heapArray[i] + " ");
+            System.out.print(heapArray[i] + " ");
         }
         System.out.println("");
     }

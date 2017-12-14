@@ -1,18 +1,25 @@
-import datastructure.DoublyLinkedList;
+import datastructure.Heap;
 
 /**
  * Created by ByeongChan on 2017. 12. 2..
  */
 public class algorithmTest {
     public static void main(String[] args) {
-        DoublyLinkedList dlist = new DoublyLinkedList();
+        Heap heap = new Heap(10);
 
-        dlist.addFirst(5);
-        dlist.addFirst(4);
-        dlist.addFirst(2);
-        dlist.addFirst(1);
+        heap.insert(5);
+        heap.insert(7);
+        heap.insert(8);
+        heap.insert(9);
+        heap.insert(4);
+        heap.insert(2);
+        heap.insert(3);
+        heap.insert(1);
 
-        System.out.println(dlist.getData(2));
-        System.out.println(dlist.getData(4));
+        heap.delete();
+        heap.delete();
+        heap.delete();
+
+        heap.print();
     }
 }
