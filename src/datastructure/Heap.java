@@ -116,13 +116,13 @@ public class Heap {
         int index = 0;
 
         for (int i = 0; i < usedSize; i++) {
-            if(index == i){
-                if(index != 0) {
+            if(index == i){ // 해당 레벨의 노드 개수가 다 채워지면 깊이 +1
+                if(index != 0) { // 깊이 레벨별로 구분해주기 위해 개행 삽입
                     System.out.println("");
                 }
 
                 System.out.println("Depth : " + depth);
-                index = index + (int) Math.pow(2, depth);
+                index = index + (int) Math.pow(2, depth); // 깊이가 깊어질수록 노드의 개수가 2^n으로 늘어난다.
                 depth++;
             }
             System.out.println(heapArray[i] + " ");
