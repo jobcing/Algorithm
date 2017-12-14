@@ -50,10 +50,12 @@ public class QuickSort {
             list[j] = temp;
         }
 
+        // pivot을 중앙으로 이동
         temp = list[j];
         list[j] = list[L];
         list[L] = temp;
 
+        // pivot을 중심으로 quick sort
         Qsort(list, L, j - 1);
         Qsort(list, j + 1, R);
     }
