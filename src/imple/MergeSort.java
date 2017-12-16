@@ -8,11 +8,14 @@ import java.util.Scanner;
  * 합병 정렬 구현 (Java)
  */
 public class MergeSort {
+
+    private static int size;
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Input Array Size : "); // 배열 사이즈 입력
-        int size = scan.nextInt();
+        size = scan.nextInt();
 
         System.out.print("Input Array Value : "); // 배열 값 입력
         int[] list = new int[size];
@@ -42,7 +45,7 @@ public class MergeSort {
     }
 
     public static void merge(int[] list, int L, int M, int R){
-        int[] temp = list;
+        int[] temp = new int[size];
 
         int i = L;
         int j = M + 1;
@@ -73,7 +76,7 @@ public class MergeSort {
             list[l] = temp[l];
         }
 
-        System.out.println(">> ");
+        System.out.println("Merge >> ");
         for (int l = 0; l < list.length; l++) {
             System.out.print(list[l] + " ");
         }
