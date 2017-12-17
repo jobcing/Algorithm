@@ -28,7 +28,7 @@ public class MergeSort {
 
         System.out.println();
         for (int i = 0; i < list.length; i++) {
-            System.out.print(list[i] + ", ");
+            System.out.print(list[i] + " ");
         }
         System.out.println();
     }
@@ -36,6 +36,7 @@ public class MergeSort {
     public static void Msort(int[] list, int L, int R){
         int M;
 
+        // 배열을 나누는 과정
         if(L < R){
             M = (L + R) / 2;
             Msort(list, L, M);
@@ -52,6 +53,8 @@ public class MergeSort {
 
         int k = L;
 
+        // 나눠진 array를 정렬하여 합치는 과정
+        // 중앙을 기점으로 왼쪽 오른쪽 데이터를 비교하여 정렬한다.
         while(i <= M && j <= R){
             if(list[i] <= list[j]){
                 temp[k] = list[i++];
@@ -62,21 +65,28 @@ public class MergeSort {
             k++;
         }
 
+        // 오른쪽 데이터가 다 처리되지 않았을 경우
+        // 오른쪽 데이터 일부가 왼쪽 데이터들 보다 크기가 크다는 뜻이 된다.
+        // 왼쪽 데이터는 모두 처리되었으므로 인덱스가 중앙(M) 이상이다.
         if(i > M){
             for (int l = j; l <= R; l++, k++) {
                 temp[k] = list[l];
             }
-        } else{
+        }
+        // 왼쪽 데이터가 다 처리되지 않았을 경우
+        else{
             for (int l = i; l <= M; l++, k++) {
                 temp[k] = list[l];
             }
         }
 
+        // 임시로 만든 array를 정렬할 array에 복사
         for (int l = L; l <= R; l++) {
             list[l] = temp[l];
         }
 
-        System.out.println("Merge >> ");
+        // merge print
+        System.out.print("Merge >> ");
         for (int l = 0; l < list.length; l++) {
             System.out.print(list[l] + " ");
         }
