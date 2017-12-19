@@ -26,8 +26,6 @@ public class exercise {
         Arrays.sort(person, new Comparator<Person>(){
             public int compare(Person p1, Person p2){ return p1.point - p2.point; }
         });
-
-        ArrayList
     }
 
 
