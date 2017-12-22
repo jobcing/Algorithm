@@ -8,6 +8,7 @@ import java.util.Scanner;
  *
  * 백준 알고리즘 1912번 풀이 (https://www.acmicpc.net/problem/1912)
  *
+ * 가장 큰 연속합 구하기 문제
  * Dynamic Programming
  * Math.max
  */
