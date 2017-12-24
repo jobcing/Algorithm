@@ -15,6 +15,7 @@ public class BOJ_2079 {
 
         String inputStr = scan.nextLine();
         int palinCnt = 0;
+        int palinCnt2 = 0;
 
         int start = 0;
         int end = inputStr.length();
@@ -29,18 +30,41 @@ public class BOJ_2079 {
             }
         }
 
-        System.out.println(palinCnt);
-    }
+        start = 0;
+        end = inputStr.length();
 
-    private static boolean palinCheck(String str){
-        int m = str.length() / 2;
-
-        for (int i = 0; i <= m; i++) {
-            if(str.charAt(i) != str.charAt(str.length() - 1 - i)){
-                return false;
+        while(end > 0){
+            if(!palinCheck(inputStr.substring(start, end))){
+                start++;
+            } else{
+                end = start;
+                start = 0;
+                palinCnt2++;
             }
         }
 
-        return true;
+        System.out.println(Math.min(palinCnt2, palinCnt));
+    }
+
+//    private static boolean palinCheck(String str){
+//        int m = str.length() / 2;
+//
+//        for (int i = 0; i <= m; i++) {
+//            if(str.charAt(i) != str.charAt(str.length() - 1 - i)){
+//                return false;
+//            }
+//        }
+//
+//        return true;
+//    }
+
+    private static boolean palinCheck(String str){
+        String reverseStr = (new StringBuffer(str)).reverse().toString();
+
+        if(str.equals(reverseStr)){
+            return true;
+        } else{
+            return false;
+        }
     }
 }
