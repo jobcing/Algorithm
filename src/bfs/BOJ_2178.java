@@ -17,7 +17,9 @@ public class BOJ_2178 {
         int n = scan.nextInt();
         int m = scan.nextInt();
 
+        // 입력받을 미로
         int[][] matrix = new int[n][m];
+        // 방문 여부
         boolean[][] visit = new boolean[n][m];
 
         scan.nextLine();
@@ -38,7 +40,7 @@ public class BOJ_2178 {
 
         int cnt = 1;
 
-        LinkedList q = new LinkedList<Point>();
+        LinkedList q = new LinkedList<Point>(); // 큐 생성
 
         q.add(new Point(0, 0,0));
         visit[0][0] = true;
@@ -46,11 +48,13 @@ public class BOJ_2178 {
         while(!q.isEmpty()){
             Point v = (Point) q.poll();
 
+            // N, M에 도착하면 break
             if(v.getRow() == n - 1 && v.getCol() == m - 1){
                 cnt = v.getLen() + 1;
                 break;
             }
 
+            // 좌로 이동
             if(v.getRow() - 1 > -1 && matrix[v.getRow() - 1][v.getCol()] == 1 &&
                     visit[v.getRow() - 1][v.getCol()] == false){
 
@@ -58,6 +62,7 @@ public class BOJ_2178 {
                 q.add(new Point(v.getRow() - 1, v.getCol(), v.getLen() + 1));
             }
 
+            // 위로 이동
             if(v.getCol() - 1 > -1 && matrix[v.getRow()][v.getCol() - 1] == 1 &&
                     visit[v.getRow()][v.getCol() - 1] == false){
 
@@ -65,6 +70,7 @@ public class BOJ_2178 {
                 q.add(new Point(v.getRow(), v.getCol() - 1, v.getLen() + 1));
             }
 
+            // 아래로 이동
             if(v.getCol() + 1 < m && matrix[v.getRow()][v.getCol() + 1] == 1 &&
                     visit[v.getRow()][v.getCol() + 1] == false){
 
@@ -72,6 +78,7 @@ public class BOJ_2178 {
                 q.add(new Point(v.getRow(), v.getCol() + 1, v.getLen() + 1));
             }
 
+            // 우로 이동
             if(v.getRow() + 1 < n && matrix[v.getRow() + 1][v.getCol()] == 1 &&
                     visit[v.getRow() + 1][v.getCol()] == false){
 
