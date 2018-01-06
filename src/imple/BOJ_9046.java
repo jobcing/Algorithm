@@ -5,8 +5,12 @@ import java.util.Scanner;
 /**
  * Created by ByeongChan on 2017. 9. 22..
  *
+ * 백준 알고리즘 9046번 풀이 (https://www.acmicpc.net/problem/9046)
+ *
+ * 알파벳 빈도수 정렬 후 가장 높은 빈도 알파벳 출력
+ * 배열 2개를 이용하여 KEY VALUE 정렬
  */
-public class ex9046 {
+public class BOJ_9046 {
 
     private static final int ALPHA = 26;
 
@@ -45,6 +49,7 @@ public class ex9046 {
         // value 값을 기준으로 알파벳(index 배열)을 정렬한다.
         for (int i = 0; i < ALPHA - 1; i++) {
             int KEY = alphabet[index[i + 1]];
+            int temp = index[i + 1];
             int j = i;
 
             while(j >= 0){
@@ -53,11 +58,7 @@ public class ex9046 {
                 index[j + 1] = index[j];
                 j--;
             }
-            index[j + 1] = index[i + 1];
-        }
-
-        for (int i = 0; i < ALPHA; i++) {
-            System.out.println(alphabet[i]);
+            index[j + 1] = temp;
         }
 
         if(alphabet[index[ALPHA - 1]] == alphabet[index[ALPHA - 2]]){
