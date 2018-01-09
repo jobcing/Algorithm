@@ -10,11 +10,11 @@ import java.util.StringTokenizer;
  * Created by ByeongChan on 2018. 1. 9..
  *
  * 백준 알고리즘 11399번 풀이 (https://www.acmicpc.net/problem/11399)
+ *
+ * 그리디 알고리즘 : 매 순간마다 최적의 선택을 하여 정해진 목표까지 계산하는 방법
+ * 누적합을 구하는방법 : p[i] * (N - i)
  */
 public class BOJ_11399 {
-    private static final char SPACE = ' ';
-    private static final char NEW_LINE = '\n';
-
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -26,18 +26,16 @@ public class BOJ_11399 {
             P[i] = Integer.parseInt(st.nextToken());
         }
 
+        br.close();
+
+        // 소요시간 오름차순 정렬
         Arrays.sort(P);
 
-        int[] dp = new int[N];
-        dp[0] = P[0];
-
-        for (int i = 1; i < N; i++) {
-            dp[i] = dp[i - 1] + P[i];
-        }
-
         int sum = 0;
+
         for (int i = 0; i < N; i++) {
-            sum = sum + dp[i];
+            // 누적 합은 i번째에 있는 수가 총 (N - i)번 더해진다.
+            sum += P[i] * (N - i);
         }
 
         System.out.println(sum);
