@@ -37,9 +37,11 @@ public class BOJ_1931 {
             meets.add(meet);
         }
 
+        // 회의 종료시간 기준으로 정렬
         Collections.sort(meets, new Comparator<Meet>() {
             @Override
             public int compare(Meet o1, Meet o2) {
+                // 만약 종료 시간이 같다면 시작이 빠른 순으로 정렬
                 if(o1.end == o2.end){
                     return o1.start - o2.start;
                 } else{
@@ -51,6 +53,7 @@ public class BOJ_1931 {
         int cnt = 0;
         int end = 0;
         for (int i = 0; i < meets.size(); i++) {
+            // 회의 시작 시각이 이전 종료 시각과 같거나 크다면 추가
             if(meets.get(i).start >= end){
                 cnt++;
                 end = meets.get(i).end;
