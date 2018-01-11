@@ -11,7 +11,6 @@ import java.util.StringTokenizer;
  * 백준 알고리즘 11047번 풀이 (https://www.acmicpc.net/problem/11047)
  *
  * N개의 동전의 종류를 가지고 K원을 만들 수 있는 동전의 최소 개수를 구하는 문제
- * 대표적인 greedy 알고리즘 문제
  */
 public class BOJ_11047 {
     public static void main(String[] args) throws IOException {
@@ -20,6 +19,7 @@ public class BOJ_11047 {
         int N = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
 
+        // 동전 종류 입력 받음
         int[] coins = new int[N];
         for (int i = 0; i < N; i++) {
             coins[i] = Integer.parseInt(br.readLine());
@@ -31,7 +31,7 @@ public class BOJ_11047 {
         int cnt = 0;
 
         for (int i = (N - 1); i > -1; i--) {
-            if(K >= coins[i]){
+            if(K >= coins[i]){ // 동전의 값이 작거나 같아야만 나눌 수 있다.
                 cnt = cnt + (K / coins[i]);
                 K = K % coins[i];
             }
