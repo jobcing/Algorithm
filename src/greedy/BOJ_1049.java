@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.StringTokenizer;
 
 /**
@@ -25,42 +24,41 @@ public class BOJ_1049 {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
-        // 기타줄 패키지 가격과 낱개 가격을 저장할 2차원 배열
-        int[][] guitarStrings = new int[m][2];
+        int[] piece = new int[m];
+        int[] pack = new int[m];
 
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine(), SPACE);
 
-            guitarStrings[i][0] = Integer.parseInt(st.nextToken()); // 패키지 가격
-            guitarStrings[i][1] = Integer.parseInt(st.nextToken()); // 낱개 가격
+            pack[i] = Integer.parseInt(st.nextToken());
+            piece[i] = Integer.parseInt(st.nextToken());
         }
 
         br.close();
 
-        Arrays.sort(guitarStrings, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[0] - o2[0];
-            }
-        });
+        // 최소 가격을 찾기 위해 정렬
+        Arrays.sort(piece);
+        Arrays.sort(pack);
 
-        int resultPrice = 0;
+        int k = n / 6;
+        int remainder = n % 6;
 
-        for (int i = 0; i < m; i++) {
-            int packPrice = guitarStrings[i][0];
-            int piecePrice = guitarStrings[i][1];
-
-            if(n >= 6){
-                resultPrice += packPrice;
-                n -= 6;
-            } else{
-                if(packPrice < piecePrice * n){
-                    resultPrice += packPrice;
-                } else{
-                    resultPrice += piecePrice * n;
-                }
-            }
+        // 기타 줄이 6개 미만이라면 패키지 하나를 사는 것으로 지정해준다.
+        if (k == 0) {
+            k = 1;
+            remainder = 0;
         }
+
+        int packPrice = pack[0] * k;
+        // 6개 이상은 패키지로 구매하고 나머지는 패키지를 하나 더 사는 것이 최소금액인지
+        // 낱개로 사는 것이 최소금액인지 비교를 한 후에 더해준다.
+        packPrice += pack[0] < piece[0] * remainder ? pack[0] : piece[0] * remainder;
+
+        // 패키지를 안사고 오로지 낱개로만 구매했을 경우
+        int piecePrice = piece[0] * n;
+
+        // 두 가지 경우를 비교하여 최종적인 최소금액을 뽑아낸다.
+        int resultPrice = packPrice > piecePrice ? piecePrice : packPrice;
 
         System.out.println(resultPrice);
     }
