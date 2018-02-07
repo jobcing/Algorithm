@@ -12,7 +12,6 @@ import java.util.StringTokenizer;
  *
  * 소수 찾기 문제
  */
-
 public class BOJ_1978 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
