@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by ByeongChan on 2017. 9. 13..
  *
- * 백준 알고리즘 1307번 풀이 (https://www.acmicpc.net/problem/1037)
+ * 백준 알고리즘 1037번 풀이 (https://www.acmicpc.net/problem/1037)
  */
 public class BOJ_1037 {
     public static void main(String[] args) {
