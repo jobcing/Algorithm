@@ -1,2 +1,2 @@
 # Algorithm
-Algorithm Solution and Datastructure Implementation
+BOJ Algorithm Solution and Datastructure Implementation
