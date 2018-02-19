@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 /**
  * Created by ByeongChan on 2018. 2. 19..
  *
- * 백준 알고리즘 2503번 풀이 (https://www.acmicpc.net/problem/2503)
+ * 백준 알고리즘 11404번 풀이 (https://www.acmicpc.net/problem/11404)
  *
  * 모든 정점 사이의 최단 경로 구하는 문제
  *
@@ -18,7 +18,7 @@ import java.util.StringTokenizer;
  * !! 따라서, 모든 정점사이의 최단 경로를 구하는 문제는 어차피 시간복잡도가 같으므로 간단한 Floyd를 사용하는 것이 좋다. !!
  */
 
-public class BOJ_2503 {
+public class BOJ_11404 {
 
     private static final int INFINITE = 100_001;
 
