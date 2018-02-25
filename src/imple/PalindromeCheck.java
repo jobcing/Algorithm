@@ -4,6 +4,9 @@ package imple;
  * Created by ByeongChan on 2018. 2. 25..
  *
  * 팰린드롬 확인 메소드 구현
+ *
+ * !! 만약 공백이 없는 문자열 팰린드롬 체크라면 (문자열길이 / 2 + 문자열길이 % 2)까지 체크하면된다.
+ * !! 하지만 공백이 있는 문자열이라면 left, right 변수를 이용해 공백은 무시하며 비교해야한다. !!
  */
 
 public class PalindromeCheck {
