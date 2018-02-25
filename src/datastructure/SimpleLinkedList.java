@@ -125,6 +125,21 @@ public class SimpleLinkedList {
         return delNode.data;
     }
 
+    public void reverse(){
+        Node nextNode = head.nextNode;
+        Node curNode = null;
+        Node prevNode = null;
+
+        while(nextNode != null){
+            prevNode = curNode;
+            curNode = nextNode;
+            nextNode = nextNode.nextNode;
+            curNode.nextNode = prevNode;
+        }
+
+        head.nextNode = curNode;
+    }
+
     public int getSize(){ // 연결리스트의 사이즈를 반환
         return size;
     }
