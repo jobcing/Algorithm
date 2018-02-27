@@ -5,12 +5,12 @@ package datastructure;
  *
  * 스택 구현 (Java)
  */
-public class Stack {
+public class StackImple {
     int[] stack;
     int size;
     int top;
 
-    public Stack(int size){
+    public StackImple(int size){
         this.size = size;
         stack = new int[size];
         top = -1;

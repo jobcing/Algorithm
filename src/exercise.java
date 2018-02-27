@@ -1,7 +1,10 @@
+import java.io.IOException;
+
 public class exercise {
-    public static void main(String[] args) {
+
+    private static boolean[] isVistied;
+
+    public static void main(String[] args) throws IOException{
 
     }
-
-
 }
