@@ -9,6 +9,12 @@ import java.util.*;
  * Created by ByeongChan on 2018. 3. 12..
  *
  * 백준 알고리즘 5719번 풀이 (https://www.acmicpc.net/problem/5719)
+ *
+ * 두 번째 최단 경로를 구하는 문제
+ * !! 우선순위를 이용한 다익스트라 + bfs이용하여 첫번째 최단경로 제거 !!
+ * !! 첫번째 최단경로를 구하고 경로를 삭제한 뒤 최단경로를 한번 더 구한다. !!
+ *
+ * Runtime Error
  */
 
 public class BOJ_5719 {
@@ -80,14 +86,16 @@ public class BOJ_5719 {
         while(!pq.isEmpty()){
             Node u = pq.poll();
 
+            // 이미 최소값을 가지고 있으므로 탐색할 필요가 없음
             if(dist[u.node] < u.dist) continue;
+            // 목적지에 도착한다면 탈출
             if(u.node == D) break;
 
-            // 탐색
+            // 인접 노드 탐색
             for (int adjNode = 0; adjNode < N; adjNode++) {
-
+                // 노드가 연결되어 있다면
                 if(weight[u.node][adjNode] != INF){
-
+                    // 이 노드를 거쳐서 가는 것이 최소 경로인지 비교
                     if(dist[adjNode] > u.dist + weight[u.node][adjNode]){
                         dist[adjNode] = u.dist + weight[u.node][adjNode];
                         pq.add(new Node(adjNode, dist[adjNode]));
