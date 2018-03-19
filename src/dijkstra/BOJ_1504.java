@@ -11,6 +11,9 @@ import java.util.StringTokenizer;
  * Created by ByeongChan on 2018. 3. 18..
  *
  * 백준 알고리즘 1504번 풀이 (https://www.acmicpc.net/problem/1504)
+ *
+ * 특정한 2개의 노드를 무조건 지나는 최단 경로 구하는 문제
+ * !! 다익스트라를 3번 !!
  */
 
 public class BOJ_1504 {
