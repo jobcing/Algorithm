@@ -25,6 +25,7 @@ public class BOJ_1916 {
         int N = Integer.parseInt(br.readLine());
         int M = Integer.parseInt(br.readLine());
 
+        // init weight list and minimum distance list
         ArrayList<ArrayList<Node>> weight = new ArrayList<>();
         int[] dist = new int[N + 1];
 
@@ -35,6 +36,7 @@ public class BOJ_1916 {
 
         StringTokenizer st = null;
 
+        // input
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine(), " ");
 
@@ -50,10 +52,13 @@ public class BOJ_1916 {
         int S = Integer.parseInt(st.nextToken());
         int D = Integer.parseInt(st.nextToken());
 
+        // buffer close
         br.close();
 
+        // dijkstra algorithm
         dijkstra(weight, dist, S);
 
+        // print S -> D minimum distance
         System.out.println(dist[D]);
     }
 
