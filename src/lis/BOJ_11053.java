@@ -18,9 +18,7 @@ public class BOJ_11053 {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-
-        // list배열은 index 1부터 사용하고 dp배열은 index 0부터 사용
-        // dp[0] = 0 값이 필요하기 때문
+        
         int[] list = new int[N + 1];
         int[] dp = new int[N + 1];
 
