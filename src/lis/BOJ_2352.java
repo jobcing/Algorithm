@@ -3,6 +3,7 @@ package lis;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -37,7 +38,19 @@ public class BOJ_2352 {
 
         for (int i = 1; i <= n; i++) {
 
+            int prevLen = 0;
+            for (int j = 1; j < i; j++) {
+                // 작은 값들 중에 가장 긴 배열의 길이를 가진 값을 구한다.
+                if(portNum[j] < portNum[i]){
+                    prevLen = Math.max(prevLen, dp[j]);
+                }
+            }
+            
+            dp[i] = prevLen + 1;
         }
 
+        Arrays.sort(dp);
+
+        System.out.println(dp[n]);
     }
 }
