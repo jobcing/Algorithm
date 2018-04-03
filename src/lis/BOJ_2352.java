@@ -45,7 +45,7 @@ public class BOJ_2352 {
                     prevLen = Math.max(prevLen, dp[j]);
                 }
             }
-            
+
             dp[i] = prevLen + 1;
         }
 
